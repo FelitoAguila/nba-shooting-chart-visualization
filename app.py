@@ -22,12 +22,4 @@ app.layout = layout
 register_callbacks(app)
 
 if __name__ == "__main__":
-    # Configuración para desarrollo local y producción
-    port = int(os.environ.get("PORT", 8050))
-    debug = os.environ.get("ENVIRONMENT") != "production"
-    
-    app.run_server(
-        host="0.0.0.0",  # Importante para Render
-        port=port,
-        debug=debug
-    )
+    app.run(debug=True, port = 8050)
