@@ -13,13 +13,14 @@ external_stylesheets = [
 ]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
-# Configuración para Render
 app.title = "🏀 NBA Shooting Chart"
-server = app.server  # Importante para Render
-
 app.layout = layout
 register_callbacks(app)
 
+# Required for Render: Expose the Flask server
+server = app.server
+
 if __name__ == "__main__":
-    app.run(debug=True, port = 8050)
+    # Use environment variables for port and host
+    port = int(os.environ.get("PORT", 8050))  # Default to 8050 for local development
+    app.run(host="0.0.0.0", port=port, debug=False)
