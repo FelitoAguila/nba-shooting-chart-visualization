@@ -32,6 +32,7 @@ def get_shooting_chart_data(player_id, team_id, season_nullable):
         team_id=team_id,
         player_id=player_id,
         season_nullable=season_nullable,    # NBA season format: 'YYYY-YY'
+        timeout=60
     )
     return shot_chart.shot_chart_detail.get_data_frame()
 
