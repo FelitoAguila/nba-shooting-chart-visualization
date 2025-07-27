@@ -26,10 +26,22 @@ def register_callbacks(app):
             player_id = get_player_id(player)
             team_id = get_team_id(team)
             data = get_shooting_chart_data(player_id, team_id, season)
-            fig = plot_shot_chart(data)
-            return fig
+            
+            if data is not None and not data.empty:
+                # Verificar si son datos de ejemplo o reales
+                title_prefix = f"{player} - {season}"
+                if len(data) <= 200:  # Probablemente datos de ejemplo
+                    title_prefix += " (Datos de Demostración)"
+                
+                fig = plot_shot_chart(data, title=title_prefix)
+                return fig
+            else:
+                return create_empty_chart(f"ℹ️ No hay datos de tiros para {player} en la temporada {season}")
+                
         except Exception as e:
-            return create_error_chart(f"Error al cargar datos: {str(e)}")
+            print(f"Error en callback: {e}")
+            # En caso de cualquier error, mostrar datos de ejemplo
+            return create_error_chart("🔄 Mostrando datos de demostración debido a problemas con la API de NBA")
 
 def create_empty_chart(message="🏀 Haz clic en 'Generar Gráfico' para comenzar"):
     """Crea un gráfico vacío con mensaje"""
