@@ -123,7 +123,8 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 
 ## 👤 Autores
 
-**Felix Aguila** 
+**Felix Aguila**
+
 **Rigo Acosta** - [@rigo93acosta](https://github.com/rigo93acosta)
 
 ---
