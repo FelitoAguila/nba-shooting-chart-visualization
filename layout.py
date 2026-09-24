@@ -41,7 +41,7 @@ layout = dbc.Container([
                     dcc.Dropdown(
                         id='player-dropdown',
                         options=get_players_list(),  
-                        value='Luka Dončić',
+                        value='LeBron James',  # Jugador más seguro como default
                         placeholder="Selecciona un jugador",
                         className="mb-3",
                         style={
@@ -58,7 +58,7 @@ layout = dbc.Container([
                     dcc.Dropdown(
                         id='team-dropdown',
                         options=get_teams_list(),  
-                        value='Dallas Mavericks',
+                        value='Los Angeles Lakers',  # Equipo más seguro como default
                         placeholder="Selecciona un equipo",
                         className="mb-3",
                         style={
@@ -74,8 +74,15 @@ layout = dbc.Container([
                              style={'fontWeight': 'bold', 'color': '#555'}),
                     dcc.Dropdown(
                         id='season-dropdown',
-                        options=['2024-25', '2023-24'],
-                        value='2024-25',
+                        options=[
+                            {'label': '2024-25', 'value': '2024-25'},
+                            {'label': '2023-24', 'value': '2023-24'},
+                            {'label': '2022-23', 'value': '2022-23'},
+                            {'label': '2021-22', 'value': '2021-22'},
+                            {'label': '2020-21', 'value': '2020-21'},
+                            {'label': '2019-20', 'value': '2019-20'}
+                        ],
+                        value='2024-25',  # Temporada más reciente
                         placeholder="Selecciona una temporada",
                         className="mb-3",
                         style={
